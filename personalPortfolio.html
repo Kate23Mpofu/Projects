@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- css styles -->
+  <link rel="stylesheet" href="styles/portfolioCSS/header.css">
+  <link rel="stylesheet" href="styles/portfolioCSS/portfolio-hero.css">
+  <link rel="stylesheet" href="styles/portfolioCSS/portfolio-about.css">
+  <link rel="stylesheet" href="styles/portfolioCSS/skills.css">
+  <link rel="stylesheet" href="styles/portfolioCSS/projects.css">
+  <link rel="stylesheet" href="styles/portfolioCSS/experience.css">
+  <link rel="stylesheet" href="styles/portfolioCSS/contact.css">
+  <link rel="stylesheet" href="styles/portfolioCSS/portfolio-footer.css">
+</head>
+
+<body>
+  <!-- Header Section  -->
+  <header id="header" class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="#" class="logo-text">
+          <span class="text-blue">My</span>Portfolio
+        </a>
+      </div>
+      <!-- Desktop Navigation -->
+      <nav id="nav" class="nav">
+        <button class="nav-link hidden" data-section="home">Home</button>
+        <button class="nav-link hidden" data-section="about">About</button>
+        <button class="nav-link hidden" data-section="skills">Skills</button>
+        <button class="nav-link hidden" data-section="projects">Projects</button>
+        <button class="nav-link hidden" data-section="experience">Experience</button>
+        <button class="nav-link hidden" data-section="contact">Contact</button>
+      </nav>
+
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-button" class="menu-button">
+        <span id="menu-icon" class="menu-icon">☰</span>
+        <span id="close-icon" class="menu-icon">✖</span>
+      </button>
+    </div>
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="mobile-menu">
+      <nav class="mobile-nav">
+        <button class="mobile-nav-link" data-section="home">Home</button>
+        <button class="mobile-nav-link" data-section="about">About</button>
+        <button class="mobile-nav-link" data-section="skills">Skills</button>
+        <button class="mobile-nav-link" data-section="projects">Projects</button>
+        <button class="mobile-nav-link" data-section="experience">Experience</button>
+        <button class="mobile-nav-link" data-section="contact">Contact</button>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- Hero Section  -->
+  <section id="home" class="hero-section">
+    <div class="background-blobs">
+      <div class="blob top-left"></div>
+      <div class="blob bottom-right"></div>
+      <div class="blob center"></div>
+    </div>
+    <div class="container">
+      <div class="text-center">
+        <h1 class="hero-title">
+          <span class="gradient-text">Tendai Teremuka</span>
+        </h1>
+        <div class="subtitle-container">
+          <h2 class="subtitle">Junior Web Developer</h2>
+          <div class="underline"></div>
+        </div>
+        <p class="description">
+          Creating responsive, accessible, and beautiful web experiences with React, TypeScript, and modern web
+          technologies.
+        </p>
+        <div class="social-icons">
+          <a href="https://github.com/Kate23Mpofu"><i class="fa fa-github icon"></i></a>
+          <a href="https://www.linkedin.com/in/tendai-teremuka-235693273/"><i class="fa fa-linkedin icon"></i></a>
+          <a href="https://www.instagram.com/_katey.cakes?igsh=MXEzbGZnODdyNHNiaw=="><i
+              class="fa fa-instagram icon"></i></a>
+        </div>
+
+        <button id="scroll-button" class="scroll-button" aria-label="Scroll down">
+          <a href="#" class="fa fa-arrow-down down-arrow"></a>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section  -->
+  <section id="about" class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div id="icon-container" class="w-full md:w-1/2 transition-all duration-1000 opacity-0 -translate-x-12">
+          <div
+            class="aspect-square relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900">
+            <img src="images/profile pic.jpeg" alt="About Me" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div id="text-container"
+          class="w-full md:w-1/2 transition-all duration-1000 delay-300 opacity-0 translate-x-12">
+          <h2 class="text-3xl font-bold mb-6">About Me</h2>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            Hi there! I'm an aspiring web developer with a focus on creating clean, efficient, and user-friendly
+            websites and applications. With a background in design and a love for coding, I bring a unique perspective
+            to every project.
+          </p>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            I am currently completing my degree in Information Technology and have been building my skills through
+            personal projects and continuous learning. I'm particularly interested in front-end development and creating
+            accessible user interfaces.
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            When I'm not coding, you can find me exploring listening to music, watching horror movies, or experimenting with
+            new recipes in the kitchen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Skills Section  -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="title">My Skills</h2>
+        <p class="description">I've developed expertise in various technologies and tools throughout my journey as a web
+          developer.</p>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category" id="frontend">
+        <div class="category-header">
+          <div class="icon">🖥️</div>
+          <h3>Frontend Development</h3>
+        </div>
+        <div class="skills-list" id="frontend-skills"></div>
+      </div>
+      <div class="skill-category" id="coding">
+        <div class="category-header">
+          <div class="icon">
+            <!-- SVG for coding -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L12 22M2 12L22 12"></path>
+            </svg>
+          </div>
+          <h3>Soft Skills</h3>
+        </div>
+        <div class="skills-list" id="soft-skills"></div>
+      </div>
+      <div class="skill-category" id="tools">
+        <div class="category-header">
+          <div class="icon">🔧</div>
+          <h3>Tools & Others</h3>
+        </div>
+        <div class="skills-list" id="tools-skills"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Projects Section  -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <div class="text-center">
+        <h2>My Projects</h2>
+        <p>Here are some of the projects I've worked on that showcase my skills and interests in web development.</p>
+      </div>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Experience Section  -->
+  <section id="experience" class="experience-section">
+    <div class="container">
+      <div class="text-center">
+        <h2>Experience & Education</h2>
+        <p>My professional journey and educational background in web development.</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-entries" id="timelineEntries"></div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Contact Section  -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="title">Get In Touch</h2>
+        <p class="subtitle">Have a project in mind or want to discuss a potential collaboration? Feel free to reach out!
+        </p>
+      </div>
+    </div>
+    <div class="content-grid">
+      <!-- Contact Info -->
+      <div id="contact-info" class="contact-info">
+        <h3 class="section-title">Contact Information</h3>
+        <div class="contact-item">
+          <div class="icon mail-icon">
+            <i class="fa fa-envelope"></i>
+          </div>
+          <div>
+            <h4><a href="mailto:blessing@gmail.com">Email</a></h4>
+          </div>
+        </div>
+        <br>
+        <div class="contact-item">
+          <div class="icon location-icon">
+            <i class="material-icons">location_on</i>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>Olifantsfontein, SA</p>
+          </div>
+        </div>
+        <div class="availability">
+          <h4>Availability</h4>
+          <p>I'm currently available for freelance work and open to discussing new opportunities.</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div id="contact-form" class="contact-form">
+        <form id="form" action="https://formspree.io/f/mwpedgep" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" id="submit-btn" class="submit-btn">Send Message</button>
+        </form>
+        <p id="form-message" style="display:none; color: green;">Message sent successfully!</p>
+
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <!-- Footer Section  -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-left">
+
+          <p class="description">Creating beautiful web experiences.</p>
+        </div>
+      </div>
+      <div class="footer-right">
+        <a href="#" aria-label="GitHub" class="social-link">
+          <a href="https://github.com/Kate23Mpofu"><i class="fa fa-github icon"></i></a>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="social-link">
+          <a href="https://www.linkedin.com/in/tendai-teremuka-235693273/"><i class="fa fa-linkedin icon"></i></a>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-link">
+          <a href="https://www.instagram.com/_katey.cakes?igsh=MXEzbGZnODdyNHNiaw=="><i
+              class="fa fa-instagram icon"></i></a>
+        </a>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <p class="footer-text">
+        © <span id="year"></span>
+      </p>
+      <p class="footer-text">
+        Made with <i class="heart-icon material-icons">favorite</i> by Tendai
+      </p>
+    </div>
+    </div>
+  </footer>
+
+
+
+  <!-- scripts -->
+  <script src="scripts/portfolioScripts/header.js"></script>
+  <script src="scripts/portfolioScripts/portfolio-hero.js"></script>
+  <script src="scripts/portfolioScripts/portfolio-about.js"></script>
+  <script src="scripts/portfolioScripts/skills.js"></script>
+  <script src="scripts/portfolioScripts/projects.js"></script>
+  <script src="scripts/portfolioScripts/experience.js"></script>
+  <script src="scripts/portfolioScripts/contact.js"></script>
+  <script src="scripts/portfolioScripts/portfolio-footer.js"></script>
+</body>
+
+</html>

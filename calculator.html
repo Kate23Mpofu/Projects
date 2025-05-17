@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.pinimg.com/736x/b1/1a/16/b11a16b90d683b713e450b5edaa5375f.jpg"
+        type="image/x-icon">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #ffbed2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 22rem;
+            height: 32rem;
+            color: gray;
+            background-color: black;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 2px 1px 2px hsl(0, 0%, 40%);
+        }
+
+        .result-box {
+            margin-top: 70px;
+            margin-left: 20px;
+            padding: 15px;
+            width: 20em;
+            height: 20px;
+            background-color: rgb(233, 233, 233);
+            box-shadow: 2px 1px 2px hsl(0, 0%, 40%);
+            border: none;
+            border-radius: 30px;
+        }
+
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px;
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+
+        .btn:nth-child(1) {
+            color: red;
+        }
+
+        .btn:nth-child(20) {
+            background-color: hsl(120, 74%, 25%);
+        }
+
+        .btn:nth-child(20):hover {
+            background-color: hsl(132, 66%, 33%);
+        }
+
+        .btn:nth-child(20):active {
+            background-color: hsl(116, 54%, 64%);
+            color: black;
+        }
+
+        .btn {
+            font-size: 18px;
+            font-weight: bold;
+            width: 3em;
+            height: 3em;
+            border: none;
+            background-color: hsl(0, 0%, 20%);
+            color: white;
+            border-radius: 50%;
+            box-shadow: 2px 1px 2px hsl(0, 0%, 30%);
+        }
+
+        .btn:hover {
+            background-color: hsl(0, 0%, 40%);
+            box-shadow: 2px 1px 2px hsl(0, 0%, 90%);
+        }
+
+        .btn:active {
+            background-color: hsl(0, 9%, 82%);
+            color: black;
+        }
+
+        .operator-btn {
+            background-color: hsl(7, 11%, 86%);
+            color: green;
+        }
+
+        .operator-btn:hover {
+            background-color: hsl(36, 6%, 54%);
+        }
+
+        .operator-btn:active {
+            background-color: hsl(40, 14%, 96%);
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" class="result-box" id="display" readonly>
+        <div class="keys">
+            <button class="btn operator-btn" onclick="clearDisplay()">clr</button>
+            <button class="btn operator-btn" onclick="deleteNum()">DEL</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('%')">%</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('/')">/</button>
+            <button class="btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('*')">*</button>
+            <button class="btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('-')">-</button>
+            <button class="btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn" onclick="appendToDisplay('3')">3</button>
+            <button class="btn operator-btn" onclick="appendToDisplay('+')">+</button>
+            <button class="btn" onclick="handleBracket()">( )</button>
+            <button class="btn" onclick="appendToDisplay('0')">0</button>
+            <button class="btn" onclick="appendToDisplay('.')">.</button>
+            <button class="btn results" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        let isCalculated = false;
+        let openBrackets = 0;
+
+        function clearDisplay() {
+            display.value = "";
+            isCalculated = false;
+            openBrackets = 0;
+        }
+
+        function deleteNum() {
+            const lastChar = display.value.slice(-1);
+            if (lastChar === '(') openBrackets--;
+            if (lastChar === ')') openBrackets++;
+            display.value = display.value.slice(0, -1);
+        }
+
+        function appendToDisplay(input) {
+            if (isCalculated) {
+                clearDisplay();
+            }
+            display.value += input;
+            isCalculated = false;
+        }
+
+        function handleBracket() {
+            const current = display.value;
+            const lastChar = current.slice(-1);
+
+            if (isCalculated) {
+                clearDisplay();
+            }
+
+            if (openBrackets === 0 || lastChar === '(' || /[\+\-\*\/\(]/.test(lastChar)) {
+                display.value += '(';
+                openBrackets++;
+            } else if (openBrackets > 0 && /\d|\)/.test(lastChar)) {
+                display.value += ')';
+                openBrackets--;
+            }
+        }
+
+        function calculate() {
+            try {
+                if (display.value.includes('%')) {
+                    display.value = display.value.replace(/(\d+(\.\d+)?)%/g, (match, number) => number / 100);
+                }
+                display.value = eval(display.value);
+                isCalculated = true;
+            } catch {
+                display.value = "Error";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

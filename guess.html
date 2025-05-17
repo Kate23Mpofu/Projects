@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <style>
+        .box {
+            display: flex;
+            justify-content: center;
+            margin-top: 15em;
+        }
+
+        .guessContainer {
+            width: 30em;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(rgb(107, 107, 64), orange);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        input,
+        button {
+            text-transform: uppercase;
+            width: 150px;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: rgb(210, 201, 201);
+            transition: all .1s linear .05s;
+        }
+
+        button:hover {
+            box-shadow: -2px 2px 2px rgb(27, 100, 27) inset;
+            background-color: whitesmoke;
+            scale: 1.1;
+        }
+
+        input:hover {
+            box-shadow: -2px 2px 2px rgb(27, 100, 27) inset;
+            background-color: whitesmoke;
+        }
+
+
+        button,
+        input {
+            box-shadow: 2px -2px 2px rgb(27, 100, 27) inset;
+        }
+
+        #message {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="guessContainer">
+            <h2>Guess the Number between 1 and 10</h2>
+            <p>You have 5 chances to guess the correct number!</p>
+            <input type="text" id="guessInput" placeholder="Enter your guess" min="1" max="10">
+            <button onclick="makeGuess()">Submit Guess</button> <br>
+            <button onclick="restartGame()">Restart</button>
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <script>
+        const min = 1;
+        const max = 10;
+        let randomNum = Math.floor(Math.random() * (max - min)) + min;
+        let guessedCorrectly = false;
+        let attempts = 0;
+
+        function makeGuess() {
+            const guessInput = document.getElementById("guessInput");
+            const message = document.getElementById("message");
+            const guess = parseInt(guessInput.value);
+
+            if (isNaN(guess)) {
+                message.textContent = "Please enter a valid number!";
+                return;
+            }
+
+            if (guess < min || guess > max) {
+                message.textContent = "Please guess a number between 1 and 10.";
+                guessInput.value = "";
+                return;
+            }
+
+            attempts++;
+
+            if (guess === randomNum) {
+                message.textContent = `🎉 Yaay! You got it in ${attempts} attempts!`;
+                guessedCorrectly = true;
+                disableInput();
+            } else if (attempts < 5) {
+                message.textContent = "❌ Oops, try again!";
+            } else {
+                message.textContent = `😔 You've run out of chances! The correct number was ${randomNum}.`;
+                disableInput();
+            }
+
+            guessInput.value = "";
+        }
+
+        function restartGame() {
+            randomNum = Math.floor(Math.random() * (max - min)) + min;
+            guessedCorrectly = false;
+            attempts = 0;
+
+            document.getElementById("message").textContent = "";
+            document.getElementById("guessInput").value = "";
+
+            document.getElementById("guessInput").disabled = false;
+            document.querySelector("button[onclick='makeGuess()']").disabled = false;
+        }
+    </script>
+
+</body>
+
+</html>
